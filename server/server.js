@@ -8,7 +8,7 @@ const auth = require("./middleware/auth");
 require("dotenv").config();
 
 const Todo = require("./models/Todo");
-const User = require("./models/User");
+const User = require("./models/user");
 
 const app = express();
 
