@@ -3,6 +3,8 @@ import axios from "axios";
 
 function App() {
 
+  const API = import.meta.env.VITE_API_URL;
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -38,7 +40,7 @@ function App() {
     try {
 
       const response = await axios.post(
-        "http://localhost:5000/register",
+        `${API}/register`,
         {
           email,
           password
@@ -64,7 +66,7 @@ function App() {
     try {
 
       const response = await axios.post(
-        "http://localhost:5000/login",
+        `${API}/login`,
         {
           email,
           password
@@ -113,7 +115,7 @@ function App() {
     try {
 
       const response = await axios.get(
-        "http://localhost:5000/todos",
+        `${API}/todos`,
         {
           headers: {
             Authorization: localStorage.getItem("token")
@@ -140,7 +142,7 @@ function App() {
     if (!text) return;
 
     await axios.post(
-      "http://localhost:5000/add",
+      `${API}/add`,
       {
         text: text
       }
@@ -159,7 +161,7 @@ function App() {
   const deleteTodo = async (id) => {
 
     await axios.delete(
-      `http://localhost:5000/delete/${id}`
+      `${API}/delete/${id}`
     );
 
     getTodos();
